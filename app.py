@@ -1,5 +1,6 @@
 from flask import Flask, render_template
-from controllers.animals_controller import animals_blueprint
+from controllers.animals_controllers import animals_blueprint
+
 
 app = Flask(__name__)
 
