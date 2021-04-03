@@ -1,8 +1,8 @@
-DROP TABLE user;
 DROP TABLE animals;
+DROP TABLE users;
 
-CREATE TABLE user (
-  id SERIAL FOREIGN KEY,
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
   vet_name VARCHAR(255)
 );
 
@@ -12,5 +12,6 @@ CREATE TABLE animals (
   date_of_birth VARCHAR(255),
   animal_type VARCHAR(255),
   owner_contact_details TEXT,
-  treatment_notes TEXT
+  treatment_notes TEXT,
+  user_id INTEGER REFERENCES users(id)
 );
