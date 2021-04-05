@@ -12,7 +12,7 @@ animals_blueprint = Blueprint("animals", __name__)
 # GET '/animal'
 @animals_blueprint.route("/animals")
 def animals():
-    animals = animals_repository.select_all() # NEW
+    animals = animal_repository.select_all() # NEW
     return render_template("animals/index.html", all_animals = animals)
 
 
@@ -20,7 +20,7 @@ def animals():
 # GET '/animals/new'
 @animals_blueprint.route('/animals/new')
 def new():
-    users = users_repository.select_all() 
+    users = user_repository.select_all() 
     return render_template("animals/new.html", users = users)
 
 
