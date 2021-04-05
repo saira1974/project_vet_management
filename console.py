@@ -15,11 +15,12 @@ user_repository.save(user2)
 
 user_repository.select_all()
 
-animal_1 = Animal("Olly", user1)
+animal_1 = Animal("Olly", user1, "date of birth","cat", "07311811098", "rat bite")
 animal_repository.save(animal_1)
 
-animal_2 = Animal("Ellie", user2)
+animal_2 = Animal("Ellie", user2, "10-09-2020", "dog", "556676", "sore paw")
 animal_repository.save(animal_2)
-
+all_users = user_repository.select_all()
+all_animals = animal_repository.select_all()
 
 pdb.set_trace()

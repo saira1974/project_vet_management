@@ -3,13 +3,13 @@ from db.run_sql import run_sql
 from models.user import User
 from models.animal import Animal
 
-def save(users):
+def save(user):
     sql = "INSERT INTO users (vet_name) VALUES (%s) RETURNING *"
-    values = [users.vet_name]
+    values = [user.vet_name]
     results = run_sql(sql, values)
     id = results[0]['id']
     user.id = id
-    return users
+    return user
 
 def select_all():
     users = []
@@ -18,8 +18,8 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        users = User(row['vet_name'], row['id'] )
-        users.append(users)
+        user = User(row['vet_name'], row['id'] )
+        users.append(user)
     return users
 
 def select(id):
@@ -29,7 +29,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        users = Users(result['vet_name'], result['id'] )
+        users = User(result['vet_name'], result['id'] )
     return users
 
 def delete_all():
@@ -56,6 +56,6 @@ def animals(users):
     results = run_sql(sql, values)
 
     for row in results:
-        animals = Animals(row['animal_name'], row['user_id'], row['date_of_birth'], row['animal_type'], row['id'], [owner_contact_details], [treatment_notes] )
-        animals.append(animals)
+        animal = Animals(row['animal_name'], row['user_id'], row['date_of_birth'], row['animal_type'], row['id'], [owner_contact_details], [treatment_notes] )
+        animal.append(animals)
     return animals

@@ -5,13 +5,13 @@ from models.user import User
 import repositories.user_repository as user_repository
 
 
-def save(animals):
-    sql = "INSERT INTO animals (animal_name, user_id, date_of_birth, animal_type, owner_contact_details, treatment_notes) VALUES (%s, %s, %s, %s %s %s) RETURNING *"
-    values = [animals.animal_name, animals.date_of_birth, animals.animal_type, animals.owner_contact_details, animals.treatment_notes, animals.animal_id]
+def save(animal):
+    sql = "INSERT INTO animals (animal_name, user_id, date_of_birth, animal_type, owner_contact_details, treatment_notes) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id"
+    values = [animal.animal_name, animal.user.id, animal.date_of_birth, animal.animal_type, animal.owner_contact_details, animal.treatment_notes]
     results = run_sql(sql, values)
     id = results[0]['id']
     animal.id = id
-    return animals
+    return animal
 
 
 def select_all():
@@ -21,9 +21,9 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        users = users_repository.select(row['user_id'])
-        animals = Animals(row['animal_name'], user, row['date_of_birth'], row['animal_type'], row['owner_contact_details'], row['treatment_notes'],row['id'])
-        animals.append(animals)
+        user = user_repository.select(row['user_id'])
+        animal = Animal(row['animal_name'],user, row['date_of_birth'], row['animal_type'], row['owner_contact_details'], row['treatment_notes'],row['id'])
+        animals.append(animal)
     return animals
 
 

@@ -28,15 +28,15 @@ def new():
 # POST '/animals'
 @animals_blueprint.route("/animals", methods=["POST"])
 def create():
-    animal_name = request.form["animal name"]
+    animal_name = request.form["animal_name"]
     user_id = request.form["user_id"]
-    date_of_birth = request.form["date of birth"]
-    animal_type = request.form["animal type"]
-    owner_contact_details = request.form["owner contact details"]
-    treatment_notes = request.form["treatment notes"]
+    date_of_birth = request.form["date_of_birth"]
+    animal_type = request.form["animal_type"]
+    owner_contact_details = request.form["owner_contact_details"]
+    treatment_notes = request.form["treatment_notes"]
     user = user_repository.select(user_id)
-    animals = Animals(animal_name, user, date_of_birth, animal_type, owner_contact_details, treatment_notes)
-    animals_repository.save(animals)
+    animal = Animal(animal_name, user, date_of_birth, animal_type, owner_contact_details, treatment_notes)
+    animal_repository.save(animal)
     return redirect("/animals")
 
 
@@ -63,10 +63,10 @@ def edit(id):
 def update(id):
     animal_name = request.form["animal name"]
     user_id = request.form["user_id"]
-    date_of_birth = request.form["date of birth"]
+    date_of_birth = request.form["date_of_birth"]
     animal_type = request.form["animal type"]
-    owner_contact_details = request.form["owner contact details"]
-    treatment_notes = request.form["treatment notes"]
+    owner_contact_details = request.form["owner_contact_details"]
+    treatment_notes = request.form["treatment_notes"]
     users = users_repository.select(user_id)
     animals = Animals(animal_name, users, date_of_birth, animal_type, owner_contact_details, treatment_notes, id)
     animals_repository.update(animals)
