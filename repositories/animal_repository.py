@@ -1,8 +1,8 @@
 from db.run_sql import run_sql
 
-from models.animals import Animals
-from models.users import Users
-import repositories.users_repository as users_repository
+from models.animal import Animal
+from models.user import User
+import repositories.user_repository as user_repository
 
 
 def save(animals):

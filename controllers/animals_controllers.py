@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect
-from repositories import animals_repository
-from repositories import users_repository
-from models.animals import Animals
+import repositories.animal_repository as animal_repository
+import repositories.user_repository as user_repository
+from models.animal import Animal
 
 from flask import Blueprint
 
