@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
+<h2>List of current animals:</h2>
 <ul>
+  
   {% for animal in all_animals %}
   <li>
 <p>{{ animal.animal_name }}</p>
@@ -11,7 +13,11 @@
   
   {% endfor %}
 </ul>
-<footer>Copyright © 2021 - www.yorkvetpractice.com</footer>
+
+   
+    
+    <p>www.yorkvetpractice.com - All Rights Reserved</p> 
+    <p>Copyright &copy;</p>
 
   
 
